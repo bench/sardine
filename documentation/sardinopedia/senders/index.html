@@ -1,0 +1,1659 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Raphaël Forment">
+      
+      
+        <link rel="canonical" href="https://sardine.raphaelforment.fr/documentation/sardinopedia/senders/">
+      
+      
+        <link rel="prev" href="../basic_swimming_lessons/">
+      
+      
+        <link rel="next" href="../patterning/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.1">
+    
+    
+      
+        <title>Senders & Handlers - Sardine</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.3bd4f189.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karla:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Karla";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="orange">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#handler-and-senders-sardine-environment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Sardine" class="md-header__button md-logo" aria-label="Sardine" data-md-component="logo">
+      
+  <img src="../../../images/sardine_logo_single.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sardine
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Senders & Handlers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Bubobubobubobubo/sardine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../showcase/" class="md-tabs__link">
+      Showcase
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../technical/installation/" class="md-tabs__link">
+        Installation / Configuration
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../introduction/" class="md-tabs__link md-tabs__link--active">
+        Documentation
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../about/" class="md-tabs__link">
+      About
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Sardine" class="md-nav__button md-logo" aria-label="Sardine" data-md-component="logo">
+      
+  <img src="../../../images/sardine_logo_single.svg" alt="logo">
+
+    </a>
+    Sardine
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Bubobubobubobubo/sardine" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcase/" class="md-nav__link">
+        Showcase
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Installation / Configuration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Installation / Configuration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Installation / Configuration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technical/installation/" class="md-nav__link">
+        Installing Sardine
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technical/configuration/" class="md-nav__link">
+        Configuration tools
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../technical/troubleshot/" class="md-nav__link">
+        Troubleshooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Documentation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1" type="checkbox" id="__nav_4_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1">
+          Sardinopedia
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Sardinopedia" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Sardinopedia
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../survival_kit/" class="md-nav__link">
+        Survival Kit
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_3" type="checkbox" id="__nav_4_1_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3">
+          Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Learning" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Learning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_swimming_lessons/" class="md-nav__link">
+        Timing and Scheduling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Senders & Handlers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Senders & Handlers
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-fishbowl" class="md-nav__link">
+    The FishBowl
+  </a>
+  
+    <nav class="md-nav" aria-label="The FishBowl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hard-dependencies" class="md-nav__link">
+    Hard dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-dependencies" class="md-nav__link">
+    Soft dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-system" class="md-nav__link">
+    Messaging system
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-senders-where-music-is-made" class="md-nav__link">
+    Default senders: Where Music is Made
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-anatomy-of-senders" class="md-nav__link">
+    I - Anatomy of Senders
+  </a>
+  
+    <nav class="md-nav" aria-label="I - Anatomy of Senders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#args-and-kwargs-arguments" class="md-nav__link">
+    Args and kwargs arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patterning-the-body" class="md-nav__link">
+    Patterning the body
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-writing-senders" class="md-nav__link">
+    Tips for writing Senders
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-the-dirt-sender-d" class="md-nav__link">
+    II - The Dirt Sender (D)
+  </a>
+  
+    <nav class="md-nav" aria-label="II - The Dirt Sender (D)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-bassdrum" class="md-nav__link">
+    Simple Bassdrum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-bassdrum" class="md-nav__link">
+    Complex Bassdrum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-breakbeat" class="md-nav__link">
+    Simple Breakbeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-sequencing" class="md-nav__link">
+    Sample sequencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#piling-up-polyphony" class="md-nav__link">
+    Piling up / Polyphony
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-midi-senders" class="md-nav__link">
+    II - MIDI Senders
+  </a>
+  
+    <nav class="md-nav" aria-label="II - MIDI Senders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note-sender" class="md-nav__link">
+    Note Sender
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-change-and-program-change-sender" class="md-nav__link">
+    Control change and Program Change Sender
+  </a>
+  
+    <nav class="md-nav" aria-label="Control change and Program Change Sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sending-a-note" class="md-nav__link">
+    Sending a note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playing-a-tune" class="md-nav__link">
+    Playing a tune
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-bit-better" class="md-nav__link">
+    A bit better
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-messages" class="md-nav__link">
+    Other messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-osc-sender" class="md-nav__link">
+    III - OSC Sender
+  </a>
+  
+    <nav class="md-nav" aria-label="III - OSC Sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiving-osc" class="md-nav__link">
+    Receiving OSC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blending-osc" class="md-nav__link">
+    Blending OSC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../patterning/" class="md-nav__link">
+        The pattern system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pattern_language/" class="md-nav__link">
+        Sardine Pattern Language
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../supercollider/" class="md-nav__link">
+        SuperCollider & SuperDirt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clock/" class="md-nav__link">
+        Clock
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_1_4" type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4">
+          Demos
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Demos" data-md-level="3">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Demos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/solstice/" class="md-nav__link">
+        Solstice
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/zorba_in_belleville/" class="md-nav__link">
+        Zorba in Belleville
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/dumpster_dive/" class="md-nav__link">
+        Dumpster Dive
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/PMA5/" class="md-nav__link">
+        Tribute to Jules Cipher
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../demos/artificial_life/" class="md-nav__link">
+        Artificial Life
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial/" class="md-nav__link">
+        Old School Tutorial
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/" class="md-nav__link">
+        Reference
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-fishbowl" class="md-nav__link">
+    The FishBowl
+  </a>
+  
+    <nav class="md-nav" aria-label="The FishBowl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hard-dependencies" class="md-nav__link">
+    Hard dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soft-dependencies" class="md-nav__link">
+    Soft dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#messaging-system" class="md-nav__link">
+    Messaging system
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-senders-where-music-is-made" class="md-nav__link">
+    Default senders: Where Music is Made
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i-anatomy-of-senders" class="md-nav__link">
+    I - Anatomy of Senders
+  </a>
+  
+    <nav class="md-nav" aria-label="I - Anatomy of Senders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#args-and-kwargs-arguments" class="md-nav__link">
+    Args and kwargs arguments
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#patterning-the-body" class="md-nav__link">
+    Patterning the body
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-for-writing-senders" class="md-nav__link">
+    Tips for writing Senders
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-the-dirt-sender-d" class="md-nav__link">
+    II - The Dirt Sender (D)
+  </a>
+  
+    <nav class="md-nav" aria-label="II - The Dirt Sender (D)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-bassdrum" class="md-nav__link">
+    Simple Bassdrum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complex-bassdrum" class="md-nav__link">
+    Complex Bassdrum
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simple-breakbeat" class="md-nav__link">
+    Simple Breakbeat
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-sequencing" class="md-nav__link">
+    Sample sequencing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#piling-up-polyphony" class="md-nav__link">
+    Piling up / Polyphony
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-midi-senders" class="md-nav__link">
+    II - MIDI Senders
+  </a>
+  
+    <nav class="md-nav" aria-label="II - MIDI Senders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#note-sender" class="md-nav__link">
+    Note Sender
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#control-change-and-program-change-sender" class="md-nav__link">
+    Control change and Program Change Sender
+  </a>
+  
+    <nav class="md-nav" aria-label="Control change and Program Change Sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sending-a-note" class="md-nav__link">
+    Sending a note
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#playing-a-tune" class="md-nav__link">
+    Playing a tune
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-bit-better" class="md-nav__link">
+    A bit better
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-messages" class="md-nav__link">
+    Other messages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-osc-sender" class="md-nav__link">
+    III - OSC Sender
+  </a>
+  
+    <nav class="md-nav" aria-label="III - OSC Sender">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#receiving-osc" class="md-nav__link">
+    Receiving OSC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blending-osc" class="md-nav__link">
+    Blending OSC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+<h1 id="handler-and-senders-sardine-environment">Handler and Senders: Sardine environment</h1>
+<p>Sardine is a modular live-coding library. You can add and substract modular components to the system. Each component is responsible of one thing and one thing only such as sending MIDI notes or receiving incoming OSC messages. These components are referred to as <code>Handlers</code>. Among these handlers, some are specialised in sending messages and communicating with the outside world. These are called <code>Senders</code>. There is one piece of software holding everything together: the <code>FishBowl</code>. As you might expect from the name, a <code>FishBowl</code> is gathering all the components of the Sardine system.</p>
+<h2 id="the-fishbowl">The FishBowl</h2>
+<p>The <code>FishBowl</code> is central to the <strong>Sardine</strong> system. It is composed of <strong>hard</strong> dependencies and <strong>soft</strong> dependencies. <strong>Hard</strong> dependencies are things like the <strong>Clock</strong> or the <strong>Parser</strong>. They are needed pretty much everywhere. As such, you can't really remove them or everything would fall apart. <strong>Soft</strong> dependencies are the various inputs or outputs you need to perform or to make anything meaningful with <strong>Sardine</strong>. By default, some of them will be added depending on what you have specified in your configuration file. This is just for convenience and to help newcomers.</p>
+<h3 id="hard-dependencies">Hard dependencies</h3>
+<p>Core components cannot be removed from the <code>FishBowl</code>. However, they can be swapped! It means that you can all of the sudden rip off the current clock and switch to a new one. The system might hiccup a bit but it will recover! To do so, note that you can use two important methods: </p>
+<ul>
+<li>
+<p><code>bowl.swap_clock(clock: "BaseClock")</code>: there are currently two clocks available: <code>InternalClock()</code> and <code>LinkClock()</code>. The latter is used for synchronisation with every device capable of using the <code>Link</code> protocol.</p>
+</li>
+<li>
+<p><code>bowl.swap_parser(parser: "BaseParser")</code>: switch from a parser to another parser. There is no reason to do that because there is only one parser for the moment but it might be useful in the future.</p>
+</li>
+</ul>
+<h3 id="soft-dependencies">Soft dependencies</h3>
+<p>This is where the fun begins. Pretty much everything in the <strong>Sardine</strong> system is a modular component that can be added or removed. Take a look at the <code>run.py</code> file if you want to see how the system is first initialized. By default, Sardine is proposing a small collection of <code>Handlers</code> that will allow you to send or receive <code>MIDI</code>, <code>OSC</code> or <code>SuperDirt</code> messages. Some other <code>Handlers</code> are used for various internal functions that you might not care about. Take a look at the following code detailing how to add modular components:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Adding a MIDI Out handler: sending MIDI notes</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># control changes, program changes, etc...</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">midi</span> <span class="o">=</span> <span class="n">MidiHandler</span><span class="p">(</span><span class="n">port_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">midi</span><span class="p">))</span> <span class="c1"># new instance of the Handler</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">bowl</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">midi</span><span class="p">)</span> <span class="c1"># adding the handler to the FishBowl</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># OSC Loop: internal component used for handling OSC messages</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">osc_loop</span> <span class="o">=</span> <span class="n">OSCLoop</span><span class="p">()</span> <span class="c1"># new instance of the Handler</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">bowl</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">osc_loop</span><span class="p">)</span>  <span class="c1"># adding the handler to the FishBowl</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># OSC Handler: dummy OSC handler</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">dummy_osc</span> <span class="o">=</span> <span class="n">OSCHandler</span><span class="p">(</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">port</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;My OSC sender&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="n">ahead_amount</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">loop</span><span class="o">=</span><span class="n">osc_loop</span><span class="p">,</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># Aliasing some methods from the handlers for later :)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">M</span> <span class="o">=</span> <span class="n">midi</span><span class="o">.</span><span class="n">send</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">CC</span> <span class="o">=</span> <span class="n">midi</span><span class="o">.</span><span class="n">send_control_changes</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">PC</span> <span class="o">=</span> <span class="n">midi</span><span class="o">.</span><span class="n">send_program_changes</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">O</span> <span class="o">=</span> <span class="n">dummy_osc</span><span class="o">.</span><span class="n">send</span>
+</code></pre></div>
+<p>Please take note of the <code>bowl.add_handler</code> method. If you don't add your component to the <code>FishBowl</code>, your component will inevitably crash! This is a fairly common mistake, especially if you are working in a hurry. </p>
+<h3 id="messaging-system">Messaging system</h3>
+<p>You might wonder what the <code>FishBowl</code> is actually doing behind the scene. Factually, it allows component to talk with each other by sharing a reference to the <code>bowl</code>. It means that any component can send a message to any other component. It also means that this same component can promptly react to any event dispatched through the <code>FishBowl</code>. Internal messages are sent using the <code>bowl.dispatch(message_type: str, *args)</code> method. This is how messages such as <code>bowl.('pause')</code>, <code>bowl.('resume')</code>, <code>bowl.('stop')</code> and <code>bowl.('play')</code> are able to stop and resume everything when needed. They are messages dispatched to the <code>FishBowl</code> making everyone aware that a major event occured.</p>
+<h2 id="default-senders-where-music-is-made">Default senders: Where Music is Made</h2>
+<p>When you install <strong>Sardine</strong>, you also install a set of default <strong>Senders</strong> that will allow you to:</p>
+<ul>
+<li>
+<p><strong>SuperDirt Sender</strong>: play sounds/synths using <strong>SuperCollider</strong> and the <strong>SuperDirt</strong> engine.</p>
+</li>
+<li>
+<p><strong>MIDI Sender</strong>: trigger/control MIDI capable software / hardware.</p>
+</li>
+<li>
+<p><strong>OSC Sender</strong>: send or receive <em>Open Sound Control</em> messages.</p>
+</li>
+</ul>
+<p>Naturally, <strong>Sardine</strong> users are thinking about adding more and more senders. Some are planned, some have never seen the light, and the best ones will be surely be added to the base library in the future. For now, these three <em>I/O</em> tools cover most of the messages used by <em>live-coders</em> and <em>algoravers</em>. <strong>Python</strong> packages can be imported to deal with other things that <strong>Sardine</strong> is not yet covering. You can turn the software into an ASCII art patterner or hack your way around to deal with DMX-controlled lights. </p>
+<p>You will soon figure out that learning how to <em>swim</em> was kind of the big deal. The rest is much easier to learn because you will now play with code quite a lot! <strong>Senders</strong> and <em>swimming functions</em> are enough to already make pretty interesting music. The rest is just me sprinkling goodies all around :)</p>
+<h2 id="i-anatomy-of-senders">I - Anatomy of Senders</h2>
+<p>A <strong>Sender</strong> is an <em>event generator</em>. It is a method call describing an event. This event can mutate based on multiple factors such as patterns, randomness, chance operations, clever <strong>Python</strong> string formatting, etc... A single sender call can be arbitrarily long depending on the precision you want to give to each event. It can sometimes happen that a sender will receive ten arguments or more.  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>       /`-._                          /`-._
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>     _/,.._/                        _/,.._/
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  ,-&#39;   ,  `-:,.-&#39;)        _     ,-&#39;   ,  `-:,.-&#39;)        _
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a> : S(...):&#39;;  _  {              : M(...):&#39;;  _  {               ... and more
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  `-.  `&#39; _,.-\`-.)        +     `-.  `&#39; _,.-\`-.)        +
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>     `\\``\,.-&#39;                     `\\``\,.-&#39;
+</code></pre></div>
+<h3 id="args-and-kwargs-arguments">Args and kwargs arguments</h3>
+<p>Every sender (<code>D()</code>, <code>CC()</code>, <code>PC()</code>) is an object taking <em>arguments</em> and <em>keyword arguments</em>. <strong>Arguments are mandatory</strong>, and keyword arguments are optional. These arguments will help to define your event:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="s1">&#39;[1:2,0.5]&#39;</span><span class="p">,</span> <span class="n">legato</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># Heavy drumbass</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">N</span><span class="p">(</span><span class="n">note</span><span class="o">=</span><span class="s1">&#39;&lt;C@min7^1&gt;&#39;</span><span class="p">,</span> <span class="n">dur</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>          <span class="c1"># Short MIDI chord</span>
+</code></pre></div>
+<p>You will have to learn what <em>arguments</em> each sender can receive. They all have their specialty. Despite the fact that they look and behave similarly, the event they describe is often different in nature. If you are interested in the default <strong>SuperDirt</strong> output, take a look at the <strong>Reference</strong> section in the menubar.</p>
+<h3 id="patterning-the-body">Patterning the body</h3>
+<p>When using a <strong>sender</strong>, you usually describe a static event composed of multiple parameters. Live-coders tend to avoid using static events as they get repetitive very quickly. You will gradually seek ways to avoid strict repetition by varying some if not all of the parameters involved in a sender. The best way to bring some variation to a pattern is to rely on the pattern mechanisms allowing you to modify how your string keyword arguments are parsed:</p>
+<ul>
+<li>
+<p><code>iterator (i for short)</code> (<em>int</em>): the iterator for patterning. <strong>Mandatory</strong> for the two other arguments to work properly. This <strong>iterator</strong> is the index of the values extracted from your linear list-like patterns (your <strong>arguments</strong> and <strong>keyword arguments</strong>). How this index will be interpreted will depend on the next two arguments.</p>
+</li>
+<li>
+<p><code>div</code> (<em>int</em>): <strong>a timing divisor</strong>, that can be aliased to <code>d</code>. It is very much alike a modulo operation. If <code>div=4</code>, the event will be emitted once every 4 iterations. The default is <code>div=1</code>, where every event is a hit! Be careful not to set a <code>div=1</code> on a very fast <em>swimming function</em> as it could result in catastrophic failure / horrible noises. There is no parachute out in the open sea.</p>
+</li>
+<li>
+<p><code>rate</code> (<em>float</em>): a speed factor for iterating over pattern values. It can be aliased by <code>r</code>. It will slow down or speed up the iteration speed, the speed at which the pattern values are indexed on. For the pattern <code>1, 2, 3</code> and a rate of <code>0.5</code>, the result will be perceptually similar to <code>1, 1, 2, 2, 3, 3</code>.</p>
+</li>
+</ul>
+<p>It is quite tricky to understand, and I am not sure that all Sardine users are actually able to grasp what these arguments do. That's something you have to see represented differently. Take a look at the three arguments on the right in the following diagram. Note how different values will produce different iteration speeds:</p>
+<p><img align="center" alt="outmethod" src="../images/sardine_out_method.png" /></p>
+<p>Now, try exploring this idea using this dummy pattern:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">def</span> <span class="nf">ocean_periodicity</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd, hhh, sn, hhh&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="s1">&#39;1,2&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;r*800&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">ocean_periodicity</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+Don't touch to the pattern itself, just change <code>i</code>, <code>r</code> or <code>d</code>. Try to get more familiar with this system. You can change the recursion speed to notice more clearly how the pattern will evolve with time.</p>
+<h3 id="tips-for-writing-senders">Tips for writing Senders</h3>
+<p>Python is an <em>extremely</em> flexible and expressive programming language. It is actually a breeze to compose arguments and keyword arguments in very fun and creative ways. Let's take some examples of some things you might want to do in the future! You can for instance store parameters common to multiple messages in a list/dictionary before sticking them to your patterns using the <code>*</code> and <code>**</code> idiom:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;loud&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;amp&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;shape&#39;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">},</span> <span class="s1">&#39;soft&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;amp&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;legato&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}}</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;loud&#39;</span><span class="p">])</span>
+</code></pre></div>
+<h2 id="ii-the-dirt-sender-d">II - The Dirt Sender (D)</h2>
+<p>The <strong>Dirt</strong> or <strong>SuperDirt</strong> sender is a sender specialised in talking with <strong>SuperCollider</strong> and more specifically with <strong>SuperDirt</strong>, a great sound engine made for live-coding. This piece of software was initially written by <a href="https://www.rsh-duesseldorf.de/en/institutes/institute-for-music-and-media/faculty/rohrhuber-julian/">Julian Rohrhuber</a> for TidalCycles but many people also use it as is. It is very stable, very flexible and highly-configurable. </p>
+<p>This sender is the most complex you will have to interact with and it is entirely optional if you wish to use <strong>Sardine</strong> only to sequence MIDI and OSC messages. This sender is actually not so different from a specialised OSC sender that talks exclusively with <strong>SuperDirt</strong> using special timestamped messages. The sender is always used like so:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">D</span><span class="p">(</span><span class="s1">&#39;sound&#39;</span><span class="p">,</span> <span class="n">keyword</span><span class="o">=</span><span class="n">value_or_pattern</span><span class="p">,</span> <span class="n">keyword2</span><span class="o">=</span><span class="n">value_or_pattern</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">iterator</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="n">div</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">rate</span><span class="p">)</span>
+</code></pre></div>
+<p>The first argument defines the sound or synthesizer you want to trigger and it is <strong>not optional</strong>. Without it, you can be sure that the sender will crash because it cannot apply parameters to a sound that is undefined. The keyword parameters are the names of your <strong>SuperDirt</strong> parameters. It can be standard parameters, orbit parameters (audio bus) or parameters related to the synthesizer you are using. You will find more about this in the Reference section that is listing pretty much all of them! It takes some experience to know what meaningful parameters are but you will get it after practicing for a while! You will feel a bit lost at first but this is a case where you learn a lot by experimenting. Take a look at the following examples.</p>
+<h3 id="simple-bassdrum">Simple Bassdrum</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">def</span> <span class="nf">bd</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">bd</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</code></pre></div>
+A simple bassdrum playing on every half-beat. This is the most basic sound-making function you can write.</p>
+<h3 id="complex-bassdrum">Complex Bassdrum</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">def</span> <span class="nf">bd</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="s1">&#39;r*4&#39;</span><span class="p">,</span> <span class="n">legato</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">cutoff</span><span class="o">=</span><span class="s1">&#39;100+0~4000&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">bd</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+</code></pre></div>
+A simple bassdrum but some parameters have been tweaked to add some randomness to the result. See how patterns can be used to make your keyword arguments more dynamic. The additional parameters are :</p>
+<ul>
+<li><code>speed</code> will reverse (&lt;0), slow (0-1), or accelerate the sample (&gt;1) by altering the playback speed. The <code>r</code> token provides randomization between <code>0.0</code> and <code>1.0</code> (<em>float</em>).</li>
+<li><code>legato</code> defines the maximum duration of the sample before cutting it, here randomized in the <code>0</code> to <code>1</code> range.</li>
+<li><code>cutoff</code> will attenuate some frequencies. This is the cutoff frequency of a lowpass filter that shuts down frequencies higher to the frequency cutoff. The cutoff frequency is guaranteed to be at least <code>100</code> plus a certain amount between <code>0</code> and <code>4000</code>.</li>
+</ul>
+<h3 id="simple-breakbeat">Simple Breakbeat</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">def</span> <span class="nf">bd</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;amencutup:0~20&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">bd</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+Picking a random sample in a folder containing slices of the classic <a href="https://en.wikipedia.org/wiki/Amen_break">amen break</a>. You could have a successful career doing this in front of audiences. Once again, the <em>magic</em> happens with the <code>sample:r*X</code> notation, which randomizes which sample is read on each execution, making it unpredictable. Note the use of an iterator. Without it, you would actually play the first sample again and again.</p>
+<h3 id="sample-sequencing">Sample sequencing</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">def</span> <span class="nf">bd</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;bd,hh,sn,hh&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">bd</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+Your classic four-on-the-floor. </p>
+<h3 id="piling-up-polyphony">Piling up / Polyphony</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">def</span> <span class="nf">pluck</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;pluck&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;pluck:1&#39;</span><span class="p">)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;pluck:2&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;pluck:3&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">again</span><span class="p">(</span><span class="n">pluck</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>You can stack events easily by just calling <code>D()</code> multiple times. In the above example, it happens that <code>pluck</code> samples are nicely order and are generating a chord if you struck them at the same time. How cool! But wait, there is more to it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="k">def</span> <span class="nf">pluck</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;&lt;pluck:[0:4]&gt;&#39;</span><span class="p">,</span> <span class="n">octave</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">pluck</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>You can also stack sounds by using polyphony. With <strong>Sardine</strong>, polyphony is not a concept reserved to notes. Every pattern can be polyphonic (sample names, speeds, adresses, etc...).</p>
+<h2 id="ii-midi-senders">II - MIDI Senders</h2>
+<p>MIDI is supported by the default <code>MidiHandler</code>. This handler is a bit special because it is defining multiple ways to send out MIDI information and not just notes or whatever. Every MIDI message can theorically be supported but the most important only are defined as of now. Send me a message if you would like to see support for other messages. This default MIDI sender works by defining a bunch of different <code>send</code> methods: </p>
+<ul>
+<li>
+<p><code>midi.send</code>: sending MIDI notes. Aliased as <code>N()</code> in the default setup.</p>
+</li>
+<li>
+<p><code>midi.send_control</code>: sending control changes (CC Messages), aliased as <code>CC()</code> in the default setup.</p>
+</li>
+<li>
+<p><code>midi.send_program</code>: sending program changes, aliased as <code>PC()</code> in the default setup.</p>
+</li>
+</ul>
+<h3 id="note-sender">Note Sender</h3>
+<p>The <strong>Note</strong> or <strong>N</strong> sender is a sender specialised for emitting <strong>MIDI</strong> <em>note-on</em> and <em>note-off</em> messages just like on a music tracker or DAW. It does not have a lot of arguments, and if you have some degree of familiarity with the <strong>MIDI</strong> protocol, you will feel at home pretty quickly:</p>
+<ul>
+<li>
+<p><strong>note</strong> (argument): your note number, between <code>0</code> and <code>127</code>. You can of course use patterns, and patterns can be patterns of notes (special syntax for writing chords, scales, notes, etc...). Values are clamped. If you enter an incredibly big number, it will be clamped to <code>127</code>. The same thing goes for small or negative numbers that will be brought back to <code>0</code>.</p>
+</li>
+<li>
+<p><strong>channel</strong> or <strong>chan</strong>: your <strong>MIDI</strong> channel from <code>0</code> to <code>15</code> (<code>1</code> to <code>16</code> in human parlance).</p>
+</li>
+<li>
+<p><strong>velocity</strong> or <strong>vel</strong>: amplitude of your note, between <code>0</code> and <code>127</code>.</p>
+</li>
+<li>
+<p><strong>duration</strong> or <strong>dur</strong>: duration of your note. Time between the <em>note-on</em> and <em>note-off</em> messages. This time is calculated in seconds. <code>dur=0.4</code> means that your note will be a little bit less than half a second.</p>
+</li>
+</ul>
+<h2 id="control-change-and-program-change-sender">Control change and Program Change Sender</h2>
+<p>Study the preceding example. The Control Change and Program Change senders are rather similar. They only take some other keyword arguments to properly function:</p>
+<ul>
+<li><code>control</code> (between <code>0</code> and <code>127</code>): the MIDI control number you would like to target.</li>
+<li><code>value</code> (between <code>0</code> and <code>127</code>): the MIDI value for that control.</li>
+<li><code>program</code> (between <code>0</code> and <code>127</code>): the MIDI program to select.</li>
+</ul>
+<h3 id="sending-a-note">Sending a note</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">def</span> <span class="nf">midi</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">N</span><span class="p">()</span><span class="o">.</span><span class="n">out</span><span class="p">()</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+No argument required to send a <strong>MIDI</strong> Note (<code>60</code>) at full velocity (<code>127</code>) on the first default <strong>MIDI</strong> channel. Arguments are only used to specify further or to override default values.</p>
+<h3 id="playing-a-tune">Playing a tune</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">def</span> <span class="nf">midi</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">N</span><span class="p">(</span><span class="n">note</span><span class="o">=</span><span class="s1">&#39;C5,D5,E5,G5,E5,D5,G5,C5&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">again</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+Playing a little melody by tweaking the <code>note</code> argument.</p>
+<h3 id="a-bit-better">A bit better</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">def</span> <span class="nf">midi</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">N</span><span class="p">(</span><span class="n">chan</span><span class="o">=</span><span class="s1">&#39;0,1,2,3&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>      <span class="n">vel</span><span class="o">=</span><span class="s1">&#39;20 + (r*80)&#39;</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>      <span class="n">dur</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>      <span class="n">note</span><span class="o">=</span><span class="s1">&#39;C5,D5,E5,G5,E5,D5,G5,C5&#39;</span><span class="p">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>    <span class="n">again</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+The same melody spreaded out on three <strong>MIDI</strong> channels (one per note) with random velocity.</p>
+<h3 id="other-messages">Other messages</h3>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">def</span> <span class="nf">midi</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    <span class="n">D</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;0,1,2,3&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>      <span class="n">velocity</span><span class="o">=</span><span class="s1">&#39;20 + (r*80)&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>      <span class="n">dur</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>      <span class="n">note</span><span class="o">=</span><span class="s1">&#39;C5,D5,E5,G5,E5,D5,G5,C5&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="n">PC</span><span class="p">(</span><span class="n">program</span><span class="o">=</span><span class="s1">&#39;1,2,3,4&#39;</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    <span class="n">CC</span><span class="p">(</span><span class="n">chan</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">val</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>    <span class="n">again</span><span class="p">(</span><span class="n">midi</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+Switching between program <code>1</code>, <code>2</code>, <code>3</code> and <code>4</code> on your MIDI Synth. Sending a control change on channel <code>0</code>, number <code>20</code> for a value of <code>50</code>.</p>
+<h2 id="iii-osc-sender">III - OSC Sender</h2>
+<p>The <strong>OSC</strong> Sender is the most complex and generic of all. It is a <strong>sender</strong> specialised for the <em>Open Sound Control</em> protocol. It is not complex because there are a lot of arguments and keyword arguments to learn but because using it relies on instanciating the <strong>sender</strong> and adding it to the bowl before being able to do anything:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">output_one</span> <span class="o">=</span> <span class="n">OSCHandler</span><span class="p">(</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">12345</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A first test connexion&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">ahead_amount</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="n">osc_loop</span><span class="p">,</span> <span class="c1"># The default OSC loop, don&#39;t ask why! </span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="p">)</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="n">bowl</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">output_one</span><span class="p">)</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="n">output_two</span> <span class="o">=</span> <span class="n">OSCHandler</span><span class="p">(</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">12346</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;A second test connexion&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">ahead_amount</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="n">osc_loop</span><span class="p">,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="p">)</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="n">bowl</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">output_two</span><span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1"># Look who&#39;s here, the send functions as usual</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="n">one</span> <span class="o">=</span> <span class="n">output_one</span><span class="o">.</span><span class="n">send</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a><span class="n">two</span> <span class="o">=</span> <span class="n">output_two</span><span class="o">.</span><span class="n">send</span>
+</code></pre></div>
+<p>You can now use the methods <code>one</code> and <code>two</code> as OSC senders just like <code>D()</code> or <code>N()</code>.  </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nd">@swim</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">def</span> <span class="nf">one_two_test</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;This is a dummy swimming function sending OSC.&quot;&quot;&quot;</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">one</span><span class="p">(</span><span class="s1">&#39;random/address&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;1,2,3&#39;</span><span class="p">)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">again</span><span class="p">(</span><span class="n">one_two_test</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>If you'd like, you can also make a <strong>Player</strong> (see <em>surfboards</em> in the preceding section) out of it by using the following technique:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">def</span> <span class="nf">osc_player</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Partial function to add a new OSC player :)&quot;&quot;&quot;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="k">return</span> <span class="n">play</span><span class="p">(</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>        <span class="n">output_one</span><span class="p">,</span> 
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="n">output_one</span><span class="o">.</span><span class="n">send</span><span class="p">,</span> 
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>        <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="p">)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">Pa</span> <span class="o">&gt;&gt;</span> <span class="n">osc_player</span><span class="p">(</span><span class="s1">&#39;random/address&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;1,2,3&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="receiving-osc">Receiving OSC</h3>
+<p>You can also receive and track incoming OSC values. In fact, you can even attach callbacks to incoming OSC messages and turn <strong>Sardine</strong> into a soundbox so let's do it!</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Making a new OSC-In Handler</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">listener</span> <span class="o">=</span> <span class="n">OSCInHandler</span><span class="p">(</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>    <span class="n">ip</span><span class="o">=</span><span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> 
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="n">port</span><span class="o">=</span><span class="mi">44444</span><span class="p">,</span> 
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Listener&quot;</span><span class="p">,</span> 
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="n">loop</span><span class="o">=</span><span class="n">osc_loop</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="p">)</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="c1"># Adding the listener to the bowl</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="n">bowl</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">listener</span><span class="p">)</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="k">def</span> <span class="nf">funny_sound</span><span class="p">():</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;bip&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">room</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a><span class="n">listener</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="s1">&#39;/bip/&#39;</span><span class="p">,</span> <span class="n">funny_sound</span><span class="p">)</span>
+</code></pre></div>
+<p>That's everything you need! In the above example, we are declaring a new <code>OSCInHandler</code> object that maps to a given port on the given IP address (with <code>127.0.0.1</code> being <code>localhost</code>). All we have to do next is to map a function to every message being received at that address and poof. We now have a working soundbox. Let's break this down and take a look at all the features you can do when receiving OSC.</p>
+<p>There are three methods you can call on your <code>OSCInHandler</code> object:</p>
+<ul>
+<li>
+<p><code>.attach(address: str, function: Callable, watch: bool)</code> : attach a callback to a given address. It must be a function. Additionally, you can set <code>watch</code> to <code>True</code> (<code>False</code> by default) to also run the <code>.watch</code> method automatically afterhands.</p>
+</li>
+<li>
+<p><code>.watch(address: str)</code> : give an address. The object will track the last received value on that address. If nothing has been received yet, it will return <code>None</code> instead of crashing \o/.</p>
+</li>
+<li>
+<p><code>.get(address)</code> : retrieve the last received value to that address. You must have used <code>.watch()</code> before to register this address to be watched. Otherwise, you will get nothing.</p>
+</li>
+</ul>
+<h3 id="blending-osc">Blending OSC</h3>
+<p>If you are receiving something, you can now use it in your patterns to map a captor, a sensor or a controller to a <strong>Sardine</strong> pattern. If you combo this with <a href="#amphibian-variables">amphibian-variables</a>, you can now contaminate your patterns with values coming from your incoming data:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">listener</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="s1">&#39;/sitar/speed/&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nd">@swim</span> 
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="k">def</span> <span class="nf">contamination</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>    <span class="n">v</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">listener</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;/sitar/speed/&#39;</span><span class="p">)[</span><span class="s1">&#39;args&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">D</span><span class="p">(</span><span class="s1">&#39;sitar&#39;</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="s1">&#39;v.a&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">again</span><span class="p">(</span><span class="n">contamination</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>This opens up the way for environmental reactive patterns that can be modified on-the-fly and that will blend code and human interaction. Handling data received from <strong>OSC</strong> can be a bit tricky at first:</p>
+<ul>
+<li>
+<p>if you wish to carefully take care of the data you receive, please use the <code>.attach()</code> method to attach a callback to every message received and properly handle the data yourself. Use the form <code>callback(*args, **kwargs)</code> and examine what data you receive in the <em>args</em> and <em>kwargs</em>. Map this to global variables, etc...</p>
+</li>
+<li>
+<p>if you don't care and just want to watch values as they go, please use the <code>.watch()</code> value but you will have to resort to using dictionnary  key access just like I do in the example above. You will have to handle cases where no data is received or cases where the received value is not of the right type. There is no memory of old messages, only the most recent one is kept in memory!</p>
+</li>
+</ul>
+<p>This is not ideal for some of you who do a lot of things with <strong>OSC</strong>. Please provide suggestions, open issues, etc... We will sort this out together!</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/Bubobubobubobubo/sardine" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/RaphBubo" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.prune", "navigation.top"], "search": "../../../assets/javascripts/workers/search.12658920.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5cf534bf.min.js"></script>
+      
+    
+  </body>
+</html>
